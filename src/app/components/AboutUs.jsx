@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function AboutUs() {
   return (
-    <div className='flex mt-30 min-h-[600px] space-x-2'>
+    <div className='flex mt-30 min-h-[400px] space-x-2'>
       <div className='w-1/2 relative'>
         <img src={"/assets/images/about_us/person.jpg"} className='rounded-lg w-2/3' alt="" />
         <div className='absolute bg-white p-2 rounded-lg w-[400px] top-40 left-60'>

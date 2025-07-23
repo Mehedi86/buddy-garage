@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Car Disk Brake",
+    "price": 20.00,
+    "rating": 5,
+    "img": "/assets/images/products/1.png"
+  },
+  {
+    "id": 2,
+    "name": "Car Spring Suspension",
+    "price": 20.00,
+    "rating": 5,
+     "img": "/assets/images/products/2.png"
+  },
+  {
+    "id": 3,
+    "name": "Cools Motor Brush",
+    "price": 20.00,
+    "rating": 5,
+     "img": "/assets/images/products/3.png"
+  },
+  {
+    "id": 4,
+    "name": "Portable Battery",
+    "price": 20.00,
+    "rating": 5,
+     "img": "/assets/images/products/4.png"
+  },
+  {
+    "id": 5,
+    "name": "Heavy Duty Tyre",
+    "price": 20.00,
+    "rating": 5,
+     "img": "/assets/images/products/5.png"
+  },
+  {
+    "id": 6,
+    "name": "Accessories",
+    "price": 20.00,
+    "rating": 5,
+     "img": "/assets/images/products/6.png"
+  }
+]

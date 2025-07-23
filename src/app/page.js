@@ -2,6 +2,7 @@ import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Banner from "./components/Banner";
 import AboutUs from "./components/AboutUs";
+import PopularProducts from "./components/PopularProducts";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <AboutUs/>
       <Services/>
       <Contact/>
+      <PopularProducts/>
     </div>
   );
 }

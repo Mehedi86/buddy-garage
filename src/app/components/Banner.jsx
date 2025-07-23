@@ -6,7 +6,7 @@ import { useKeenSlider } from 'keen-slider/react'
 
 export default function Banner() {
     const [sliderRef, instanceRef] = useKeenSlider(
-        { loop: true, min: 2, max: 6 },
+        { loop: true},
         {
             slideChanged() {
                 console.log('slide changed')
@@ -31,7 +31,6 @@ export default function Banner() {
                         </div>
                     </div>
                     <img src={`/assets/images/banner/${num}.jpg`} className='rounded-xl w-full h-[750px]' />
-                    
                 </div>
             ))}
 
