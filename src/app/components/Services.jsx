@@ -33,6 +33,9 @@ export default function Services() {
                     serviceData={service}
                 />)}
             </div>
+            <div className='flex justify-center my-12'>
+                <button className="btn btn-xl btn-outline btn-error rounded">More Services</button>
+            </div>
         </div>
     )
 }
