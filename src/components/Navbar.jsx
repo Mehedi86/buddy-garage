@@ -8,11 +8,11 @@ export default function Navbar() {
     const navMenu = () => {
         return (
             <>
-                <li><a>Home</a></li>
-                <li><a>About</a></li>
-                <li><a>Services</a></li>
-                <li><a>Blogs</a></li>
-                <li><a>Contact</a></li>
+                <li><Link href="/">Home</Link></li>
+                <li><Link href="/about">About</Link></li>
+                <li><Link href="/services">Services</Link></li>
+                <li><Link href="/blogs">Blogs</Link></li>
+                <li><Link href="/contact">Contact</Link></li>
             </>
         )
     }
@@ -41,8 +41,8 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <div className="navbar-end space-x-2">
-                    <RiShoppingBag2Fill size={20}/>
-                    <CiSearch size={20}/>
+                    <RiShoppingBag2Fill size={20} />
+                    <CiSearch size={20} />
                     <button className="btn btn-outline btn-error rounded">Appointment</button>
                 </div>
             </div>
