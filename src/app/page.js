@@ -3,7 +3,7 @@ import Services from "./components/Services";
 
 export default function Home() {
   return (
-    <div>
+    <div className="container mx-auto">
       <Services/>
     </div>
   );

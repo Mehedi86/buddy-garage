@@ -1,5 +1,6 @@
 'use client'
 
+import SectionTitle from '@/components/SectionTitle';
 import ServiceCard from '@/components/ServiceCard';
 import { useEffect, useState } from 'react';
 
@@ -20,8 +21,13 @@ export default function Services() {
     }, [])
     console.log(services)
     return (
-        <div>
-            <div className='grid grid-cols-4'>
+        <div className='my-12'>
+            <SectionTitle
+                subTitle="Our Service Area"
+                title="Service"
+                details="the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
+            />
+            <div className='grid grid-cols-3 gap-6'>
                 {services.map(service => <ServiceCard
                     key={service._id}
                     serviceData={service}
