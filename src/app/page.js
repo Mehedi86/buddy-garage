@@ -5,6 +5,7 @@ import AboutUs from "./components/AboutUs";
 import PopularProducts from "./components/PopularProducts";
 import Team from "./components/Team";
 import Features from "./components/Features";
+import Testimonial from "./components/Testimonial";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <PopularProducts/>
       <Team/>
       <Features/>
+      <Testimonial/>
     </div>
   );
 }
