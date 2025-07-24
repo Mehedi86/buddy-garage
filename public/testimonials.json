@@ -5,7 +5,8 @@
     "role": "Businessman",
     "image": "/images/awlad.jpg",
     "text": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.",
-    "rating": 5
+    "rating": 5,
+    "img": "/assets/images/testimonials/person.png"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "role": "Software Engineer",
     "image": "/images/sarah.jpg",
     "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. It has survived not only five centuries, but also the leap into electronic typesetting.",
-    "rating": 4
+    "rating": 4,
+    "img": "/assets/images/testimonials/khan.jpg"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "role": "Entrepreneur",
     "image": "/images/jamal.jpg",
     "text": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC.",
-    "rating": 5
+    "rating": 5,
+    "img": "/assets/images/testimonials/person.png"
   },
   {
     "id": 4,
@@ -29,6 +32,7 @@
     "role": "Graphic Designer",
     "image": "/images/nadia.jpg",
     "text": "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from Cicero's writings.",
-    "rating": 4
+    "rating": 4,
+    "img": "/assets/images/testimonials/nadia.jpg"
   }
 ]

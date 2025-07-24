@@ -40,7 +40,7 @@ export default function Testimonial() {
                             <div className="p-6 border rounded-lg shadow bg-white h-full">
                                 <div className="flex items-center gap-4 mb-4">
                                     <img
-                                        src={item.image}
+                                        src={item.img}
                                         alt={item.name}
                                         className="w-12 h-12 rounded-full object-cover"
                                     />
