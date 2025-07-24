@@ -3,6 +3,7 @@ import Contact from "./components/Contact";
 import Banner from "./components/Banner";
 import AboutUs from "./components/AboutUs";
 import PopularProducts from "./components/PopularProducts";
+import Team from "./components/Team";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Services/>
       <Contact/>
       <PopularProducts/>
+      <Team/>
     </div>
   );
 }

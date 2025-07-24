@@ -19,7 +19,7 @@ export default function Services() {
         }
         fetchData();
     }, [])
-    console.log(services)
+    
     return (
         <div className='my-12'>
             <SectionTitle

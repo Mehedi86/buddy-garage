@@ -14,7 +14,7 @@ export default function PopularProducts() {
         }
         productsData();
     }, [])
-    console.log(products);
+    
     return (
         <div>
             <SectionTitle
