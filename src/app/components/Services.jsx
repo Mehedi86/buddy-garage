@@ -1,25 +1,14 @@
-'use client'
 
 import SectionTitle from '@/components/SectionTitle';
 import ServiceCard from '@/components/ServiceCard';
-import { useEffect, useState } from 'react';
+import dbConnect from '@/lib/dbConnect';
 
-export default function Services() {
-    const [services, setServices] = useState([])
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await fetch('/services.json');
-                const data = await res.json();
-                setServices(data);
-            }
-            catch (error) {
-                console.log(error.message)
-            }
-        }
-        fetchData();
-    }, [])
-    
+
+export default async function Services() {
+
+    const serviceCollection = dbConnect("services");
+    const services = await serviceCollection.find({}).toArray();
+
     return (
         <div className='my-12'>
             <SectionTitle
