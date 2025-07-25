@@ -12,13 +12,13 @@ export default function Testimonial() {
 
     useEffect(() => {
         const testimonialData = async () => {
-            const res = await fetch('/testimonials.json');
+            const res = await fetch('http://localhost:3000/api/testimonials');
             const data = await res.json();
             setTestimonials(data)
         }
         testimonialData();
     }, [])
-    console.log(testimonials)
+    
     return (
         <div>
             <SectionTitle
@@ -35,8 +35,8 @@ export default function Testimonial() {
                     loop={true}
                     className="testimonial-swiper"
                 >
-                    {testimonials.map((item, idx) => (
-                        <SwiperSlide key={idx}>
+                    {testimonials.map((item) => (
+                        <SwiperSlide key={item._id}>
                             <div className="p-6 border border-neutral-200 rounded-lg shadow bg-white h-[200px]">
                                 <div className="flex items-center gap-4 mb-4">
                                     <img

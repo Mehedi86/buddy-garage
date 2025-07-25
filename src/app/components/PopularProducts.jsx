@@ -8,7 +8,7 @@ export default function PopularProducts() {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         const productsData = async () => {
-            const res = await fetch('/products.json');
+            const res = await fetch('http://localhost:3000/api/products');
             const data = await res.json();
             setProducts(data)
         }
@@ -24,7 +24,7 @@ export default function PopularProducts() {
             />
             <div className='grid grid-cols-3 gap-6'>
                 {products.map(product => <ProductCard
-                    key={product.id}
+                    key={product._id}
                     productData={product}
                 />)}
             </div>
