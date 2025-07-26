@@ -3,7 +3,7 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 
 
 export default function dbConnect(collectionName) {
-    const uri = "mongodb+srv://buddyGarage:KmpuDZfwEcB6l7Hd@cluster0.kpht8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+    const uri = process.env.mongoUri;
     const client = new MongoClient(uri, {
         serverApi: {
             version: ServerApiVersion.v1,
@@ -13,8 +13,3 @@ export default function dbConnect(collectionName) {
     });
     return client.db("buddyGarage").collection(collectionName)
 }
-
-
-
-// buddyGarage
-// KmpuDZfwEcB6l7Hd
