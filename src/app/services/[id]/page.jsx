@@ -83,9 +83,9 @@ export default async function page({ params }) {
                         </div>
 
                         {/* Video Section */}
-                        <div className='mt-12'>
+                        <div className='my-12'>
                             <div className='relative'>
-                                <img src="/assets/images/video-placeholder.jpg" alt="Video" className='rounded-xl w-full h-[250px] object-cover' />
+                                <img src="/assets/images/homeCarousel/2.jpg" alt="Video" className='rounded-xl w-full h-[400px] object-cover' />
                                 <div className='absolute inset-0 flex justify-center items-center'>
                                     <button className='w-16 h-16 bg-[#FF3C00] rounded-full flex items-center justify-center text-white text-2xl'>
                                         ▶
@@ -111,9 +111,26 @@ export default async function page({ params }) {
 
                         {/* Download Section */}
                         <div className='bg-black p-6 rounded-xl text-white space-y-4'>
-                            <h1 className='text-lg font-bold'>Download</h1>
-                            <button className='w-full bg-[#FF3C00] py-2 rounded font-semibold'>Our Brochure</button>
-                            <button className='w-full bg-[#FF3C00] py-2 rounded font-semibold'>Company Details</button>
+                            <h1 className='text-xl font-bold'>Download</h1>
+
+                            <div className='flex items-center justify-between'>
+                                <div className='flex items-center gap-4'>
+                                    <img src="/file.svg" className='w-9 h-9' alt="file" />
+                                    <p>Our Brochure</p>
+                                </div>
+                                <div className='bg-[#FF3C00] p-4'>
+                                    <FaArrowRight size={18} className='text-white' />
+                                </div>
+                            </div>
+                            <div className='flex items-center justify-between'>
+                                <div className='flex items-center gap-4'>
+                                    <img src="/file.svg" className='w-9 h-9' alt="file" />
+                                    <p>Company Details</p>
+                                </div>
+                                <div className='bg-[#FF3C00] p-4'>
+                                    <FaArrowRight size={18} className='text-white' />
+                                </div>
+                            </div>
                         </div>
 
                         {/* Car Doctor Section */}
