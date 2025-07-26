@@ -5,9 +5,10 @@ import dbConnect from '@/lib/dbConnect';
 
 
 export default async function Services() {
-
+    
     const serviceCollection = dbConnect("services");
     const services = await serviceCollection.find({}).toArray();
+    console.log(services)
 
     return (
         <div className='my-12'>
@@ -28,3 +29,5 @@ export default async function Services() {
         </div>
     )
 }
+
+
