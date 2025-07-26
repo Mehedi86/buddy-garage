@@ -134,12 +134,18 @@ export default async function page({ params }) {
                         </div>
 
                         {/* Car Doctor Section */}
-                        <div className='bg-[#1a1a1a] text-white p-6 rounded-xl space-y-4 text-center'>
-                            <h1 className='text-xl font-bold'>Car Doctor</h1>
-                            <p>Need Help? We Are Here To Help You</p>
-                            <button className='bg-[#FF3C00] px-4 py-2 rounded-full font-bold'>Car Doctor Special</button>
-                            <p className='text-sm'>Save up to 60% off</p>
-                            <button className='bg-white text-[#FF3C00] px-4 py-2 rounded-full font-bold'>Get a Quote</button>
+                        <div className='bg-[#1a1a1a] text-white px-12 py-6 rounded-xl space-y-4 text-center'>
+                            <img src="/assets/logo.svg" className='w-12 h-10 mx-auto bg-black' alt="logo" />
+                            <h1 className='text-2xl font-bold'>Car Doctor</h1>
+                            <p className='text-xl font-bold'>Need Help? We Are Here To Help You</p>
+                            
+                            <div className='p-8 bg-neutral-100 space-y-2 rounded'>
+                                <h1 className='text-xl font-bold text-black'><span className='text-[#FF3C00]'>Car Doctor</span> Special</h1>
+                                <p className='text-[#FF3C00] font-semibold'><span className='text-neutral-600'>Save up to</span> 60% off</p>
+                            </div>
+                            <div className='bg-[#FF3C00] py-2 px-4 w-1/2 mx-auto rounded -mt-10'>
+                                <p className='text-white text-xl font-semibold'>Get A Quote</p>
+                            </div>
                         </div>
 
                         {/* Price & Checkout */}
