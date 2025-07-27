@@ -1,5 +1,6 @@
 import { registerUser } from '@/app/actions/auth/registerUser';
 import React from 'react'
+import Swal from 'sweetalert2';
 
 export default function RegisterForm() {
     const handleSignUp = async (event) => {
@@ -9,17 +10,16 @@ export default function RegisterForm() {
             email: event.target.email.value,
             password: event.target.password.value,
         };
-        //   const resp = await fetch("https://car-doctor-pro-nine.vercel.app/signup/api", {
-        //     method: "POST",
-        //     body: JSON.stringify(newUser),
-        //     headers: {
-        //       "content-type": "application/json",
-        //     },
-        //   });
-        //   if (resp.status === 200) {
-        //     event.target.reset();
-        //   }
-        registerUser(newUser)
+
+        const result = await registerUser(newUser);
+        if (result.acknowledged) {
+            Swal.fire({
+                title: "Drag me!",
+                icon: "success",
+                draggable: true
+            });
+            event.target.reset();
+        }
     };
     return (
         <form onSubmit={handleSignUp} action="">
