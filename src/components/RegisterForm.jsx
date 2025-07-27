@@ -1,3 +1,4 @@
+import { registerUser } from '@/app/actions/auth/registerUser';
 import React from 'react'
 
 export default function RegisterForm() {
@@ -18,7 +19,7 @@ export default function RegisterForm() {
         //   if (resp.status === 200) {
         //     event.target.reset();
         //   }
-        console.log(newUser)
+        registerUser(newUser)
     };
     return (
         <form onSubmit={handleSignUp} action="">
