@@ -44,6 +44,8 @@ export default function Navbar() {
                     <RiShoppingBag2Fill size={20} />
                     <CiSearch size={20} />
                     <button className="btn btn-outline btn-error rounded">Appointment</button>
+                    <Link href={"/register"} className='btn'>Register</Link>
+                    <Link href={"/login"} className='btn'>Login</Link>
                 </div>
             </div>
         </div>
