@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import { signIn, signOut } from "next-auth/react"
 
 export default function LoginForm() {
     const handleLogin = async (event) => {
@@ -12,6 +13,7 @@ export default function LoginForm() {
         //     redirect: true,
         //     callbackUrl: path ? path : "/",
         // });
+        await signIn("credentials", { email, password })
     };
     return (
         <form onSubmit={handleLogin} action="">

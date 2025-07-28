@@ -5,8 +5,9 @@ import React  from "react";
 // import { signIn, useSession } from "next-auth/react";
 import { BsGoogle, BsGithub } from "react-icons/bs";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-// import SocialSignin from "@/components/shared/SocialSignin";
 import LoginForm from "@/components/LoginForm";
+import SocialSignin from "@/components/SocialSignin";
+
 const Page = () => {
 
   const router = useRouter();
@@ -34,7 +35,7 @@ const Page = () => {
             <LoginForm/>
             <div>
               <h6 className="my-12 text-center">or sign in with</h6>
-              {/* <SocialSignin /> */}
+              <SocialSignin />
               <h6 className="my-12 text-center">
                 not have account ?{" "}
                 <Link className="text-primary font-semibold" href={"/signup"}>
