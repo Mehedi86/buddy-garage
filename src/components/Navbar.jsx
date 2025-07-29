@@ -1,3 +1,6 @@
+'use client'
+
+import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -5,6 +8,8 @@ import { CiSearch } from "react-icons/ci";
 import { RiShoppingBag2Fill } from "react-icons/ri";
 
 export default function Navbar() {
+    const { data: session, status } = useSession();
+    console.log(status)
     const navMenu = () => {
         return (
             <>
@@ -44,10 +49,14 @@ export default function Navbar() {
                     <RiShoppingBag2Fill size={20} />
                     <CiSearch size={20} />
                     <button className="btn btn-outline btn-error rounded">Appointment</button>
-                    <Link href={"/register"} className='btn'>Register</Link>
-                    <Link href={"/login"} className='btn'>Login</Link>
+                    {status == 'authenticated' ? (<button onClick={()=>signOut()} className='btn'>Logout</button>)
+                        :
+                        (<>
+                            <Link href={"/register"} className='btn'>Register</Link>
+                            <Link href={"/login"} className='btn'>Login</Link>
+                        </>)}
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
