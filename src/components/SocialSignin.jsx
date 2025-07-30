@@ -1,8 +1,8 @@
 "use client"
 
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 import toast from "react-hot-toast";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
@@ -11,19 +11,18 @@ const SocialSignin = () => {
   // const searchParams = useSearchParams()
 
   // const path = searchParams.get('redirect')
-  // const session = useSession()
+  const session = useSession()
 
-  const handleSocialLogin = async (provider) => {
-    console.log("socialLogin", provider)
-    const result = await signIn(provider, {redirect: false})
-    if(result.ok){
-      router.push('/');
-      toast.success(`Logged in successfull using ${provider}`)
-    }
-    else{
-      toast.error("Something went wrong!!")
-    }
+  const handleSocialLogin = (provider) => {
+    signIn(provider)
   }
+
+  useEffect(() => {
+    if (session?.status == 'authenticated') {
+      router.push("/");
+      toast.success("User logged in successfully!!")
+    }
+  }, [session?.status])
 
   return (
     <div className="flex items-center justify-center space-x-3">
