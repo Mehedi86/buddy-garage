@@ -9,7 +9,7 @@ import { RiShoppingBag2Fill } from "react-icons/ri";
 
 export default function Navbar() {
     const { data: session, status } = useSession();
-    console.log(status)
+    console.log(session)
     const navMenu = () => {
         return (
             <>
@@ -48,8 +48,9 @@ export default function Navbar() {
                 <div className="navbar-end space-x-2">
                     <RiShoppingBag2Fill size={20} />
                     <CiSearch size={20} />
+                    {session ? <Image src={session?.user?.image} width={50} height={50} alt='profile image' /> : ''}
                     <button className="btn btn-outline btn-error rounded">Appointment</button>
-                    {status == 'authenticated' ? (<button onClick={()=>signOut()} className='btn'>Logout</button>)
+                    {status == 'authenticated' ? (<button onClick={() => signOut()} className='btn'>Logout</button>)
                         :
                         (<>
                             <Link href={"/register"} className='btn'>Register</Link>
