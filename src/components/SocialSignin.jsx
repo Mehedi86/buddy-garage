@@ -1,12 +1,13 @@
 "use client"
+
 import { signIn } from "next-auth/react";
-// import { signIn, useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 import { BsGithub, BsGoogle } from "react-icons/bs";
 
 const SocialSignin = () => {
-  // const router = useRouter()
+  const router = useRouter()
   // const searchParams = useSearchParams()
 
   // const path = searchParams.get('redirect')
@@ -15,7 +16,13 @@ const SocialSignin = () => {
   const handleSocialLogin = async (provider) => {
     console.log("socialLogin", provider)
     const result = await signIn(provider, {redirect: false})
-    console.log(result)
+    if(result.ok){
+      router.push('/');
+      toast.success(`Logged in successfull using ${provider}`)
+    }
+    else{
+      toast.error("Something went wrong!!")
+    }
   }
 
   return (
