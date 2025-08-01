@@ -1,11 +1,11 @@
-import dbConnect from '@/lib/dbConnect';
-import { ObjectId } from 'mongodb';
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa6";
 
 export default async function page({ params }) {
     const otherServices = ['Full Car Repair', 'Engine Repair', 'Automatic Services', 'Engine Oil Change', 'Battery Charge'];
-
+    const p = await params;
+    const res = await fetch(`http://localhost:3000/api/service/${p.id}`);
+    const service = await res.json()
 
     return (
         <div>
