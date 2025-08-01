@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import { FaArrowRight } from "react-icons/fa6";
 
@@ -149,9 +150,9 @@ export default async function page({ params }) {
                         {/* Price & Checkout */}
                         <div className='bg-stone-100 p-6 rounded-xl space-y-4 text-center'>
                             <h2 className='text-2xl font-bold'>Price ${service.price}</h2>
-                            <button className='bg-[#FF3C00] text-white px-6 py-3 rounded font-bold'>
+                            <Link href={`/checkout/${service._id}`} className='bg-[#FF3C00] text-white px-6 py-3 rounded font-bold'>
                                 Proceed Checkout
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
