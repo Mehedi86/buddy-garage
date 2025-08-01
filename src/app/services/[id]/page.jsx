@@ -5,9 +5,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default async function page({ params }) {
     const otherServices = ['Full Car Repair', 'Engine Repair', 'Automatic Services', 'Engine Oil Change', 'Battery Charge'];
-    const p = await params;
-    const serviceCollection = dbConnect("services");
-    const service = await serviceCollection.findOne({ _id: new ObjectId(p.id) });
+
 
     return (
         <div>
@@ -138,7 +136,7 @@ export default async function page({ params }) {
                             <img src="/assets/logo.svg" className='w-12 h-10 mx-auto bg-black' alt="logo" />
                             <h1 className='text-2xl font-bold'>Car Doctor</h1>
                             <p className='text-xl font-bold'>Need Help? We Are Here To Help You</p>
-                            
+
                             <div className='p-8 bg-neutral-100 space-y-2 rounded'>
                                 <h1 className='text-xl font-bold text-black'><span className='text-[#FF3C00]'>Car Doctor</span> Special</h1>
                                 <p className='text-[#FF3C00] font-semibold'><span className='text-neutral-600'>Save up to</span> 60% off</p>
