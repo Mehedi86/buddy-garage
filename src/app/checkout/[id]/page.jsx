@@ -4,8 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-// import { toast, ToastContainer } from "react-toastify";
-// import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Checkout = () => {
     const { data: session } = useSession();
@@ -52,10 +52,10 @@ const Checkout = () => {
                 }
             });
             const response = await resp.json();
-            // toast.success(response?.message || "Booking successful");
+            toast.success(response?.message || "Booking successful");
             form.reset();
         } catch (err) {
-            // toast.error("Booking failed");
+            toast.error("Booking failed");
             console.error("Booking failed", err);
         }
     };
@@ -66,7 +66,7 @@ const Checkout = () => {
 
     return (
         <div className="w-full px-4 md:px-8 lg:px-16 py-10">
-            {/* <ToastContainer /> */}
+            <ToastContainer />
             <div className="relative h-60 md:h-72 lg:h-[320px] rounded-xl overflow-hidden shadow-md mb-12">
                 <Image
                     src={img}
