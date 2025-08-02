@@ -1,137 +1,157 @@
-"use client";
-// import { getServicesDetails } from "@/services/getServices";
-// import { useSession } from "next-auth/react";
-import Image from "next/image";
+'use client';
+
 import React, { useEffect, useState } from "react";
-// import { ToastContainer, toast } from "react-toastify";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
+import { useParams } from "next/navigation";
+// import { toast, ToastContainer } from "react-toastify";
+// import 'react-toastify/dist/ReactToastify.css';
 
-const Checkout = ({ params }) => {
-    //     const {data} = useSession();
-    //   const [ service, setService ] = useState({});
-    //   const loadService = async () => {
-    //     const details = await getServicesDetails(params.id);
-    //     setService(details.service);
-    //   };
-    //   const { _id, title, description, img, price, facility } = service || {};
+const Checkout = () => {
+    const { data: session } = useSession();
+    const params = useParams();
+    const [service, setService] = useState({});
+    const [loading, setLoading] = useState(true);
 
-    //   const handleBooking = async (event) => {
-    //     event.preventDefault();
-    //     const newBooking = { 
-    //         email : data?.user?.email,
-    //         name : data?.user?.name,
-    //         address : event.target.address.value,
-    //         phone : event.target.phone.value,
-    //         date : event.target.date.value,
-    //         serviceTitle : title,
-    //         serviceID : _id,
-    //         price : price,
-    //     }
+    useEffect(() => {
+        const loadService = async () => {
+            try {
+                const res = await fetch(`http://localhost:3000/api/service/${params.id}`);
+                const data = await res.json();
+                setService(data);
+                setLoading(false);
+            } catch (error) {
+                console.error("Failed to load service:", error);
+                setLoading(false);
+            }
+        };
+        if (params?.id) loadService();
+    }, [params]);
 
-    //     const resp = await fetch('https://car-doctor-pro-nine.vercel.app/checkout/api/new-booking', {
-    //         method: 'POST',
-    //         body: JSON.stringify(newBooking),
-    //         headers : {
-    //             "content-type" : "application/json"
-    //         }
-    //     })
-    //     const response =await resp?.json()
-    //     toast.success(response?.message)
-    //     event.target.reset()
+    const handleBooking = async (event) => {
+        event.preventDefault();
+        const form = event.target;
 
-    //   };
+        const newBooking = {
+            email: session?.user?.email,
+            name: session?.user?.name,
+            address: form.address.value,
+            phone: form.phone.value,
+            date: form.date.value,
+            serviceTitle: service.title,
+            serviceID: service._id,
+            price: service.price,
+        };
 
-    //   useEffect(() => {
-    //     loadService()
-    //   },[params])
+        try {
+            const resp = await fetch('https://car-doctor-pro-nine.vercel.app/checkout/api/new-booking', {
+                method: 'POST',
+                body: JSON.stringify(newBooking),
+                headers: {
+                    "content-type": "application/json"
+                }
+            });
+            const response = await resp.json();
+            // toast.success(response?.message || "Booking successful");
+            form.reset();
+        } catch (err) {
+            // toast.error("Booking failed");
+            console.error("Booking failed", err);
+        }
+    };
+
+    if (loading) return <p className="text-center mt-12 text-lg font-medium">Loading...</p>;
+
+    const { title, img, price } = service || {};
 
     return (
-        <div className="container mx-auto">
+        <div className="w-full px-4 md:px-8 lg:px-16 py-10">
             {/* <ToastContainer /> */}
-            <div className="relative  h-72">
-                {/* <Image
-                    className="absolute h-72 w-full left-0 top-0 object-cover"
+            <div className="relative h-60 md:h-72 lg:h-[320px] rounded-xl overflow-hidden shadow-md mb-12">
+                <Image
                     src={img}
                     alt="service"
-                    width={1920}
-                    height={1080}
-                    style={{ width: "90vw" }}
-                /> */}
-                <div className="absolute h-full left-0 top-0 flex items-center justify-center bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] ">
-                    {/* <h1 className="text-white text-3xl font-bold flex justify-center items-center ml-8">
-                        Checkout {title}
-                    </h1> */}
+                    layout="fill"
+                    objectFit="cover"
+                    className="z-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/20 flex items-center justify-center">
+                    <h1 className="text-white text-2xl md:text-4xl font-bold">
+                        Checkout - {title}
+                    </h1>
                 </div>
             </div>
-            {/* onSubmit={handleBooking} */}
-            <div className="my-12 bg-slate-300 p-12">
-                <form >
+
+            <div className="bg-white rounded-xl shadow-lg p-6 md:p-10 max-w-4xl mx-auto">
+                <form onSubmit={handleBooking} className="space-y-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Name</span>
-                            </label>
-                            {/* <input defaultValue={data?.user?.name} type="text" name="name" className="input input-bordered" /> */}
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Date</span>
-                            </label>
-                            {/* <input defaultValue={new Date().getDate()} type="date" name="date" className="input input-bordered" /> */}
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            {/* <input
-                                defaultValue={data?.user?.email}
+                        <div>
+                            <label className="block mb-2 font-medium text-gray-700">Name</label>
+                            <input
                                 type="text"
-                                name="email"
-                                placeholder="email"
-                                className="input input-bordered"
-                            /> */}
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Due amount</span>
-                            </label>
-                            {/* <input
-                                defaultValue={price}
+                                name="name"
+                                defaultValue={session?.user?.name || ""}
+                                className="w-full input input-bordered"
                                 readOnly
+                            />
+                        </div>
+                        <div>
+                            <label className="block mb-2 font-medium text-gray-700">Date</label>
+                            <input
+                                type="date"
+                                name="date"
+                                className="w-full input input-bordered"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label className="block mb-2 font-medium text-gray-700">Email</label>
+                            <input
+                                type="email"
+                                name="email"
+                                defaultValue={session?.user?.email || ""}
+                                className="w-full input input-bordered"
+                                readOnly
+                            />
+                        </div>
+                        <div>
+                            <label className="block mb-2 font-medium text-gray-700">Due Amount</label>
+                            <input
                                 type="text"
                                 name="price"
-                                className="input input-bordered"
-                            /> */}
+                                defaultValue={price}
+                                className="w-full input input-bordered"
+                                readOnly
+                            />
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Phone</span>
-                            </label>
+                        <div>
+                            <label className="block mb-2 font-medium text-gray-700">Phone</label>
                             <input
-                                required
                                 type="text"
                                 name="phone"
                                 placeholder="Your Phone"
-                                className="input input-bordered"
+                                required
+                                className="w-full input input-bordered"
                             />
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Present Address</span>
-                            </label>
+                        <div>
+                            <label className="block mb-2 font-medium text-gray-700">Present Address</label>
                             <input
                                 type="text"
                                 name="address"
                                 placeholder="Your Address"
-                                className="input input-bordered"
+                                className="w-full input input-bordered"
                             />
                         </div>
                     </div>
-                    <div className="form-control mt-6">
-                        <input
-                            className="btn btn-primary btn-block"
+
+                    <div>
+                        <button
                             type="submit"
-                            value="Order Confirm"
-                        />
+                            className="w-full md:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-300"
+                        >
+                            Confirm Order
+                        </button>
                     </div>
                 </form>
             </div>
