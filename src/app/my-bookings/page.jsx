@@ -19,19 +19,14 @@ const Page = () => {
     }, [])
 
 
-    console.log(bookings)
-
     const handleDelete = async (id) => {
-        const deleted = await fetch(
-            `https://car-doctor-pro-nine.vercel.app/my-bookings/api/booking/${id}`, {
+
+        const res = await fetch(
+            `http://localhost:3000/api/service/${id}`, {
             method: "DELETE",
-        }
-        );
-        const resp = await deleted.json();
-        if (resp?.response?.deletedCount > 0) {
-            toast.success(resp?.message)
-            loadData();
-        }
+        });
+        const data = await res.json();
+        console.log(data)
     };
 
 
@@ -77,7 +72,7 @@ const Page = () => {
                                     <td>{date}</td>
                                     <td>
                                         <div className="flex items-center space-x-3">
-                                            <Link href={`/my-bookings/update/${_id}`}><button class="btn btn-primary">Edit</button></Link>
+                                            <Link href={`/my-bookings/update/${_id}`}><button className="btn btn-primary">Edit</button></Link>
                                             <button
                                                 onClick={() => handleDelete(_id)}
                                                 className="btn btn-error"
