@@ -9,7 +9,7 @@ import { RiShoppingBag2Fill } from "react-icons/ri";
 
 export default function Navbar() {
     const { data: session, status } = useSession();
-    console.log(session)
+    
     const navMenu = () => {
         return (
             <>
@@ -17,7 +17,7 @@ export default function Navbar() {
                 <li><Link href="/about">About</Link></li>
                 <li><Link href="/services">Services</Link></li>
                 <li><Link href="/blogs">Blogs</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/my-bookings">My Bookings</Link></li>
             </>
         )
     }

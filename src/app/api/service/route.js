@@ -9,8 +9,8 @@ export const GET = async (req) => {
     const session = await getServerSession(authOptions);
     if (session) {
         const email = session?.user?.email;
-        const userCollection = dbConnect('userCollection');
-        const result = await userCollection.find({ email }).toArray();
+        const bookingCollection = dbConnect('bookingCollection');
+        const result = await bookingCollection.find({ email }).toArray();
         return NextResponse.json(result)
     }
 
