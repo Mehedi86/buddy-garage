@@ -71,7 +71,7 @@ const Checkout = () => {
             <ToastContainer />
             <div className="relative h-60 md:h-72 lg:h-[320px] rounded-xl overflow-hidden shadow-md mb-12">
                 <Image
-                    src={img}
+                    src={img || "/placeholder.png"}
                     alt="service"
                     layout="fill"
                     objectFit="cover"
