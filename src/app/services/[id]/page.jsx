@@ -1,14 +1,39 @@
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import Loading from '@/components/Loading';
 import Link from 'next/link';
-import React from 'react';
 import { FaArrowRight } from "react-icons/fa6";
 
-export default async function page({ params }) {
+export default function Page() {
+    const { id } = useParams();
+    const [service, setService] = useState(null);
+    const [loading, setLoading] = useState(true);
     const otherServices = ['Full Car Repair', 'Engine Repair', 'Automatic Services', 'Engine Oil Change', 'Battery Charge'];
-    const p = await params;
-    const res = await fetch(`http://localhost:3000/api/service/${p.id}`);
-    const service = await res.json()
+
+    useEffect(() => {
+        const fetchService = async () => {
+            try {
+                const res = await fetch(`http://localhost:3000/api/service/${id}`);
+                const data = await res.json();
+                setService(data);
+            } catch (error) {
+                console.error("Error fetching service:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchService();
+    }, [id]);
+
+    if (loading || !service) {
+        return <Loading />;
+    }
 
     return (
+        
         <div>
             {/* banner section */}
             <section>
