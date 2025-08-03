@@ -6,12 +6,14 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useLoading } from "@/app/context/LoadingContext";
+import Loading from "@/components/Loading";
 
 const Checkout = () => {
     const { data: session } = useSession();
     const params = useParams();
     const [service, setService] = useState({});
-    const [loading, setLoading] = useState(true);
+    const { loading, setLoading } = useLoading();
 
     useEffect(() => {
         const loadService = async () => {
@@ -60,7 +62,7 @@ const Checkout = () => {
         }
     };
 
-    if (loading) return <p className="text-center mt-12 text-lg font-medium">Loading...</p>;
+    if (loading) return <Loading/>;
 
     const { title, img, price } = service || {};
 

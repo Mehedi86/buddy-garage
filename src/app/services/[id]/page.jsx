@@ -5,11 +5,14 @@ import { useParams } from 'next/navigation';
 import Loading from '@/components/Loading';
 import Link from 'next/link';
 import { FaArrowRight } from "react-icons/fa6";
+import { useLoading } from '@/app/context/LoadingContext';
+
 
 export default function Page() {
+    const { loading, setLoading } = useLoading();
     const { id } = useParams();
     const [service, setService] = useState(null);
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const otherServices = ['Full Car Repair', 'Engine Repair', 'Automatic Services', 'Engine Oil Change', 'Battery Charge'];
 
     useEffect(() => {
@@ -33,7 +36,7 @@ export default function Page() {
     }
 
     return (
-        
+
         <div>
             {/* banner section */}
             <section>

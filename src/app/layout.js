@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 import NextAuthProvider from "@/providers/NextAuthProvider";
+import { LoadingProvider } from "./context/LoadingContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,15 +24,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextAuthProvider>
           <Navbar />
           <Toaster />
-          {children}
+          <LoadingProvider>
+            {children}
+          </LoadingProvider>
         </NextAuthProvider>
-
         <Footer />
       </body>
     </html>
