@@ -2,7 +2,6 @@
 import SectionTitle from '@/components/SectionTitle';
 import ServiceCard from '@/components/ServiceCard';
 import dbConnect from '@/lib/dbConnect';
-import Link from 'next/link';
 
 
 export default async function Services() {
@@ -25,7 +24,7 @@ export default async function Services() {
                 />)}
             </div>
             <div className='flex justify-center my-12'>
-                <Link href='/services' className="btn btn-xl btn-outline btn-error rounded">More Services</Link>
+                <button className="btn btn-xl btn-outline btn-error rounded">More Services</button>
             </div>
         </div>
     )
